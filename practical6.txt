@@ -1,0 +1,50 @@
+practical6 
+step 3 code : Write a Selenium Script
+1. Create a New Java Class:
+Right-click on the Source Packages folder in the Projects window.
+Source Packages
+↓
+New → Java Class
+Class name: ObjectCount and then Click Finish.
+Source code -
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.List;
+public class ObjectCount {
+public static void main(String[] args) {
+System.setProperty(
+"webdriver.chrome.driver",
+"D://STQA//chromedriver-win64//chromedriver.exe"
+);
+WebDriver driver = new ChromeDriver();
+
+driver.get("https://classroom.google.com/");
+
+List<WebElement> objects =
+driver.findElements(By.xpath("//*"));
+
+List<WebElement> links =
+driver.findElements(By.tagName("a"));
+List<WebElement> images =
+driver.findElements(By.tagName("img"));
+List<WebElement> buttons =
+driver.findElements(By.tagName("button"));
+List<WebElement> inputs =
+driver.findElements(By.tagName("input"));
+System.out.println("Total Objects: " + objects.size());
+System.out.println("Total Links: " + links.size());
+System.out.println("Total Images: " + images.size());
+System.out.println("Total Buttons: " + buttons.size());
+System.out.println("Total Input Elements: " + inputs.size());
+System.out.println();
+System.out.println("----- Categorized Object Count -----");
+System.out.println("Links : " + links.size());
+System.out.println("Images : " + images.size());
+System.out.println("Buttons : " + buttons.size());
+System.out.println("Input Elements : " + inputs.size());
+
+driver.quit();
+}
+}
